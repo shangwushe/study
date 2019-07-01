@@ -159,6 +159,13 @@ return [
             'persistent' => false,
             'prefix'     => '',
         ],
+        //memcached配置
+        'memcached' => [
+            'host'       => '127.0.0.1',
+            'port'       => 11211,
+            'time_out'   => 300,
+            'persistent' => false,
+        ],
 
     ],
 

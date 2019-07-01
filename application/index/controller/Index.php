@@ -12,4 +12,7 @@ class Index
     {
         return 'hello,' . $name;
     }
+    public function phpinfo(){
+        echo phpinfo();
+    }
 }

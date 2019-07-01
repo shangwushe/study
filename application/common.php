@@ -411,3 +411,55 @@ function redis_lsize($key=''){
 }
 
 /**********end redis**********/
+
+/**********start memcached**********/
+
+/**
+ * memcached_connect
+ * connect memcached
+ * @param $options array
+ * @return object
+ * @author gxk
+ * @date 2019-07-01
+ */
+function memcached_connect($options=[]){
+    return new \think\cache\driver\Memcached($options);
+}
+
+/**
+ * memcached_has function
+ * memcached has the key cache
+ * @param $key string
+ * @return  boolean
+ * @author gxk
+ * @date 2019-07-01
+ */
+function memcached_has($key){
+    if($key&&$memcached=memcached_connect()){
+        dump($key);
+        $result = $memcached->has($key);
+    }else{
+        $result = false;
+    }
+    return false;
+}
+
+/**
+ * memcached_set
+ * @param $key string
+ * @param $value
+ * @param $expire int time out
+ * @return boolean
+ * @author gxk
+ * @date 2019-07-01
+ */
+function memcached_set($key,$value,$expire=null){
+    if($key&&$memcache=memcached_connect()){
+        $result = $memcache->set($key,$value,$expire);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**********end memcached**********/
