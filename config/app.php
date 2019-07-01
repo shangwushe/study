@@ -143,4 +143,23 @@ return [
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
 
+    //系统配置
+    'system_config'=>'system_config_development',//开发环境:system_config_development 生产环境:system_config_product
+
+    //开发环境系统配置
+    'system_config_development'=>[
+        //Redis配置
+        'redis' => [
+            'host'       => '127.0.0.1',
+            'port'       => 6379,
+            'password'   => '',
+            'select'     => 0,
+            'timeout'    => 0,
+            'expire'     => 0,
+            'persistent' => false,
+            'prefix'     => '',
+        ],
+
+    ],
+
 ];
