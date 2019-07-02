@@ -436,7 +436,6 @@ function memcached_connect($options=[]){
  */
 function memcached_has($key){
     if($key&&$memcached=memcached_connect()){
-        dump($key);
         $result = $memcached->has($key);
     }else{
         $result = false;
@@ -445,7 +444,8 @@ function memcached_has($key){
 }
 
 /**
- * memcached_set
+ * memcached_set function
+ * set key=>value cache
  * @param $key string
  * @param $value
  * @param $expire int time out
@@ -454,8 +454,102 @@ function memcached_has($key){
  * @date 2019-07-01
  */
 function memcached_set($key,$value,$expire=null){
-    if($key&&$memcache=memcached_connect()){
-        $result = $memcache->set($key,$value,$expire);
+    if($key&&$memcached=memcached_connect()){
+        $result = $memcached->set($key,$value,$expire);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**
+ * memcached_get function
+ * get the key=>value cache
+ * @param $key
+ * @return string
+ */
+function memcached_get($key){
+    if($key&&$memcached=memcached_connect()){
+        $result = $memcached->get($key);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**
+ * memcached_inc function
+ * inc step of key , if the key not exist,reduce by 0
+ * @param $key string
+ * @param $step int
+ * @return int|boolean
+ */
+function memcached_inc($key,$step=1){
+    if($key&&$memcached=memcached_connect()){
+        $result = $memcached->inc($key,$step);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**
+ * memcached_dec function
+ * dec step of key , if the key not exist,reduce by 0
+ * @param $key string
+ * @param $step int
+ * @return int|boolean
+ */
+function memcached_dec($key,$step=1){
+    if($key&&$memcached=memcached_connect()){
+        $result = $memcached->dec($key,$step);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**
+ * memcached_rm function
+ * @param $key string
+ * @param $ttl int
+ * @return boolean
+ */
+function memcached_rm($key,$ttl=false){
+    if($key&&$memcached=memcached_connect()){
+        $result = $memcached->rm($key,$ttl);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**
+ * memcached_clear function
+ * clean the tag cache
+ * @param $tag = string
+ * @return boolean
+ */
+function memcached_clean($tag=null){
+    if($memcached=memcached_connect()){
+        $result = $memcached->clean($tag);
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+/**
+ * 缓存标签
+ * @access public
+ * @param  string        $name 标签名
+ * @param  string|array  $keys 缓存标识
+ * @param  bool          $overlay 是否覆盖
+ * @return $this
+ */
+function memcached_tag($name, $keys = null, $overlay = false){
+    if($memcached=memcached_connect()){
+        $result = $memcached->tag($name,$keys,$overlay);
     }else{
         $result = false;
     }
