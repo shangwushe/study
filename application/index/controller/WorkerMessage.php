@@ -82,6 +82,43 @@ class WorkerMessage extends Controller {
         //如果不设置，并且是以守护进程方式运行，则所有终端输出全部重定向到/dev/null。注意：此属性必须在Worker::runAll();运行前设置才有效。windows系统不支持此特性。
         //Worker::$stdoutFile = '/tmp/stdout.log';
 
+        /***********param logFile***********/
+        //用来指定workerman日志文件位置。此文件记录了workerman自身相关的日志，包括启动、停止等。如果没有设置，文件名默认为workerman.log，文件位置位于Workerman的上一级目录中。
+        //Worker::$logFile = '/tmp/workerman.log';
+
+        /***********param user***********/
+        //设置当前Worker实例以哪个用户运行。此属性只有当前用户为root时才能生效。不设置时默认以当前用户运行。建议$user设置权限较低的用户，例如www-data、apache、nobody等。注意：此属性必须在Worker::runAll();运行前设置才有效。windows系统不支持此特性。
+        // 设置实例的运行用户
+        //$worker->user = 'www-data';
+
+        /***********param reloadable***********/
+        //设置当前Worker实例是否可以reload，即收到reload信号后是否退出重启。不设置默认为true，收到reload信号后自动重启进程。
+        //有些进程维持着客户端连接，例如Gateway/Worker模型中的gateway进程，当运行reload重新载入业务代码时，却又不想客户端连接断开，则设置gateway进程的reloadable属性为false
+        // 设置此实例收到reload信号后是否reload重启
+        //$worker->reloadable = false;
+
+        /***********param daemonize***********/
+        //此属性为全局静态属性，表示是否以daemon(守护进程)方式运行。如果启动命令使用了 -d参数，则该属性会自动设置为true。也可以代码中手动设置。
+        //注意：此属性必须在Worker::runAll();运行前设置才有效。windows系统不支持此特性。
+        //Worker::$daemonize = true;
+
+        /***********param globalEvent***********/
+        //此属性为全局静态属性，为全局的eventloop实例，可以向其注册文件描述符的读写事件或者信号事件。
+        // 当进程收到SIGALRM信号时，打印输出一些信息
+        /*Worker::$globalEvent->add(SIGALRM, EventInterface::EV_SIGNAL, function()
+        {
+            echo "Get signal SIGALRM\n";
+        });*/
+
+        /***********param onWorkerStart***********/
+        //设置Worker子进程启动时的回调函数，每个子进程启动时都会执行。
+        /*$worker->onWorkerStart = function($worker)
+        {
+            echo "Worker starting...\n";
+        };*/
+
+        /***********param onWorkerReload***********/
+        //设置Worker收到reload信号后执行的回调。可以利用onWorkerReload回调做很多事情，例如在不需要重启进程的情况下重新加载业务配置文件。
 
         /***********param param_name***********/
 
