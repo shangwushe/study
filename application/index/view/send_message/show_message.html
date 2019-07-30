@@ -8,12 +8,15 @@
 接受消息
 </body>
 <script>
-    var ws = new WebSocket('websocket://127.0.0.1:1234');
+    var ws = new WebSocket('ws://127.0.0.1:1234');
     ws.onopen = function(){
-        var uid = 'uid1';
-        ws.send(uid);
+        var data = 'gxk';
+        console.log(data);
+        ws.send(data);
     };
     ws.onmessage = function(e){
+        console.log(e.data);
+        console.log(e.data);
         alert(e.data);
     };
 </script>
