@@ -7,8 +7,12 @@
  */
 namespace app\index\controller;
 
-class SendMessage{
+class SendMessage extends \think\Controller{
     function send(){
-        send_message('uid1','hello');
+        send_message('gxk','hello');
+
+    }
+    function show_message(){
+        return $this->fetch();
     }
 }
