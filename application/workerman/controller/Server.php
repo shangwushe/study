@@ -5,13 +5,16 @@
  * Date: 2019-07-06
  * Time: 9:51
  */
-namespace app\workman\controller;
+namespace app\workerman\controller;
 
 class Server extends \think\worker\Server {
     protected $socket = '';
     protected $host = '';
     protected $uidConnections = [];
 
+    public function hello(){
+        echo 'hello';
+    }
     public function __construct() {
         $this->socket = 'websocket://'.config('worker.host').':2346';
         $this->host = config('worker.host');
@@ -45,7 +48,7 @@ class Server extends \think\worker\Server {
      * @param $data
      */
     public function onMessage($connection, $data){
-        $data = json_decode($data,true);
+        /*$data = json_decode($data,true);
         //$connection->send('receive:'.json_encode($data));
 
         // 判断当前客户端是否已经验证,既是否设置了uid
@@ -58,7 +61,7 @@ class Server extends \think\worker\Server {
             $connection->index = count($this->uidConnections[$connection->uid])-1;
             //dump($connection->index);
             //dump(array_keys($this->uidConnections[$connection->uid]));
-        }
+        }*/
         //$connection->send('receive:'.json_encode($data));
     }
 

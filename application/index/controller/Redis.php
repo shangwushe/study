@@ -88,7 +88,7 @@ class Redis extends \think\Controller{
      */
     public function hmset(){
         $key = input('param.key','scores');
-        $field = input('param.field/a',[1=>69,2=>60]);
+        $field = input('param.field/a',[1=>[1,2],2=>60]);
         $result = redis_hmset($key,$field);
         dump($result);
     }
@@ -99,7 +99,7 @@ class Redis extends \think\Controller{
      */
     public function hmget(){
         $key = input('param.key','myname');
-        $field = input('param.field','firstname');
+        $field = input('param.field/d',[1,2]);
         $result = redis_hmget($key,$field);
         dump($result);
     }

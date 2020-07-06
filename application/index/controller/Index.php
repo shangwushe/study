@@ -15,4 +15,7 @@ class Index
     public function phpinfo(){
         echo phpinfo();
     }
+    public function sendEmail(){
+        send_mail('kaia@jobzt.cn','郭雄开','现在有一份审批文件已经到达你这边审批了，麻烦处理一下!','审批消息');
+    }
 }

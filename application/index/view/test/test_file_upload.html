@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="__LIB__/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<form action="index/test/saveFile">
+    <input type="file" id="file" class="btn"/>
+    <!--<div  id="finish" style="background-color: #008800;"></div>-->
+    <div class="progress w-50 center">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" id="finish" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div  id="rate"></div>
+    <div  id="divlog"></div>
+    <a class="btn btn-success" id="upstart" href="#">上传</a>
+    <a class="btn btn-warning" id="stop" onclick="javascript:void(0)">暂停</a>
+    <a class="btn btn-primary" id="restart" onclick="javascript:void(0)">重新上传</a>
+</form>
+</body>
+<script src="__JS__/require.js"></script>
+<script src="__JS__/big_file.js" type="module"></script>
+<!--<script src="__JS__/test.js" type="module"></script>-->
+</html>

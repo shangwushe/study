@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="editor">
+</div>
+</body>
+<script type="module" src="__LIB__/ckeditor5/packages/ckeditor5-build-classic/src/ckeditor.js"></script>
+<script type="module" src="__LIB__/ckeditor5/packages/translations/zh-cn.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ),{language: 'zh-cn'} )
+        .then( editor => {
+            console.log( editor );
+            editor.setData( '<p>Some text.</p>' );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+</html>

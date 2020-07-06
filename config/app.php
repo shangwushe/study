@@ -159,6 +159,14 @@ return [
             'persistent' => false,
             'prefix'     => '',
         ],
+        //RabbitMQ配置
+        'rabbitmq'=>[
+            'host'      =>  'localhost',
+            'port'      =>  '5672',
+            'user'      =>  'guest',
+            'password'  =>  'guest',
+            'vhost'     =>  'study',
+        ],
         //memcached配置
         'memcached' => [
             'host'       => '127.0.0.1',
@@ -166,7 +174,20 @@ return [
             'time_out'   => 300,
             'persistent' => false,
         ],
-
+        //ztjy163邮箱设置
+        'ztjy163_mail_config' => [
+            'Host'=>'smtp.163.com',
+            'Prot'=>465,//163邮箱的ssl协议方式端口号是465/994
+            'SMTPAuth'=>true,
+            'SMTPSecure'=>'ssl',
+            'CharSet'=>'UTF-8',
+            'Encoding'=>'base64',
+            'Username'=>'ztjy5156@163.com',//我的邮箱
+            'Password'=>'2ztjy220192',//授权码
+            'From'=>'ztjy5156@163.com',//发件人地址
+            'FromName'=>'智通教育',//发件人名
+            'Subject'=>'智通教育提醒您',//邮件标题
+        ]
     ],
 
 ];
